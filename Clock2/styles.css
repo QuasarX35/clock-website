@@ -1,0 +1,184 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    margin: 1rem;
+    text-align: center;
+    font-size: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: azure;
+}
+
+#clock {
+    float: left;
+    position: relative;
+    border: 5px solid black;
+    margin-right: 50%;
+    width: 40rem;
+    height: 40rem;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.minMark {
+    position: absolute;
+    border: 1px solid #333;
+    width: 95%;
+    top: 50%;
+    left: 2.5%;
+    z-index: 50;
+}
+
+#bottomCircle {
+    position: absolute;
+    background-color: azure;
+    width: 36rem;
+    height: 36rem;
+    top: 2rem;
+    left: 2rem;
+    border-radius: 50%;
+    z-index: 75;
+}
+
+.hourMark {
+    position: absolute;
+    border: 3px solid black;
+    width: 95%;
+    top: 50%;
+    left: 2.5%;
+    z-index: 75;
+}
+
+#middleCircle {
+    position: absolute;
+    background-color: azure;
+    width: 35.5rem;
+    height: 35.5rem;
+    top: 2.25rem;
+    left: 2.25rem;
+    border-radius: 50%;
+    z-index: 96;
+}
+
+#topCircle {
+    position: absolute;
+    background-color: black;
+    width: 1.5rem;
+    height: 1.5rem;
+    top: 19.4rem;
+    left: 19.4rem;
+    border-radius: 50%;
+    z-index: 100;
+}
+
+.hourNumber {
+    position: absolute;
+    color: black;
+    font-size: 60px;
+    z-index: 100;
+}
+
+#num12 {
+    top: -1.5rem;
+    left: 18rem;
+}
+
+#num1 {
+    top: 0.7rem;
+    left: 27rem;
+}
+
+#num2 {
+    top: 6rem;
+    left: 32.7rem;
+}
+
+#num3 {
+    top: 14.3rem;
+    left: 35rem;
+}
+
+#num4 {
+    top: 22rem;
+    left: 32.7rem;
+}
+
+#num5 {
+    top: 27.5rem;
+    left: 27rem;
+}
+
+#num6 {
+    top: 30rem;
+    left: 19rem;
+}
+
+#num7 {
+    top: 27.5rem;
+    left: 11rem;
+}
+
+#num8 {
+    top: 22rem;
+    left: 5rem;
+}
+
+#num9 {
+    top: 14.3rem;
+    left: 2.8rem;
+}
+
+#num10 {
+    top: 6rem;
+    left: 4.8rem;
+}
+
+#num11 {
+    top: 0.7rem;
+    left: 10rem;
+}
+
+#hourHand {
+    position: absolute;
+    border: 5px solid black;
+    background-color: black;
+    height: 30%;
+    width: 1.5%;
+    top: 7.5rem;
+    left: 19.55rem;
+    z-index: 99;
+    transform-origin: bottom;
+    transform: rotate(0deg);
+}
+
+#minHand {
+    position: absolute;
+    border: 5px solid black;
+    background-color: black;
+    height: 42%;
+    width: 0.5px;
+    top: 2.7rem;
+    left: 19.84rem;
+    z-index: 97;
+    transform-origin: bottom;
+    transform: rotate(0deg);
+}
+
+#secHand {
+    position: absolute;
+    border: 1px solid red;
+    background-color: red;
+    height: 46%;
+    width: 1px;
+    top: 1.60rem;
+    left: 20.05rem;
+    z-index: 98;
+    transform-origin: bottom;
+    transform: rotate(0deg);
+}
+
+#digital {
+    position: relative
+}
