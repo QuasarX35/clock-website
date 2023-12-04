@@ -22,34 +22,26 @@ function updateClock() {
     const year = now.getFullYear();
 
     document.getElementById('date').textContent = `${month + 1}/${day}/${year}`;
-    document.getElementById('time').textContent = `${hours}:${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    document.getElementById('time').textContent = `${hours == 0 ? '0' : ''}${hours}:${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 }
 
-function updateWeather() {
+const apiKey = "b0855f0d337eb10cea885183cb8317e4";
+const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=Kuala%20Lumpur";
 
-    // API Key methods
-    var apiKey = '12345';
-    Weather.setApiKey(apiKey);
-    var tempApiKey = Weather.getApiKey();
+async function checkWeather() {
+    const response = await fetch(apiUrl + `&appid=${apiKey}`);
+    var data = await response.json();
 
-    const weatherData = null;
-
-    // Get the current weather for a given city using the latitude and longitude
-    var lat = 3.136899260164333,
-        long = 101.73367344637204;
-    Weather.getCurrentByLatLong(lat, long, function (current) {
-        weatherData = {
-            temperature: current.temperature(),
-            condition: current.conditions()
-        };
-    });
-
-    document.getElementById('weather').textContent = `Weather: ${weatherData.condition}, ${weatherData.temperature}°C`;
+    console.log(data);
+    document.getElementById('cityNameAndTemp').textContent = `${data.name}, ${data.main.temp}°C`;
+    document.getElementById('weather').textContent = `${data.weather[0].main}, ${data.weather[0].description}`;
+    document.getElementById('humidity').textContent = `Humidity: ${data.main.humidity}%`;
+    document.getElementById('wind').textContent = `Wind: ${data.wind.speed} km/h`;
 }
 
 function update() {
     updateClock();
-    updateWeather();
+    checkWeather();
 }
 
 setInterval(update, 1000);
