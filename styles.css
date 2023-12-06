@@ -1,143 +1,379 @@
+/*** Responsive Styles Tablet ***/
+@media all and (min-width: 1201px) {
+    
+}
+
+/*** Responsive Styles Smartphone Portrait */
+@media all and (min-width: 401px) and (max-width: 1200px) {
+    
+}
+
+@media all and (max-width: 400px) {
+    body {
+        padding-top: 7%;
+        font-size: 200%;
+    }
+
+    .container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+@media (min-width: 1281px) {
+    body {
+        padding-top: 4%;
+        font-size: 3.4rem;
+    }
+
+    .container {
+        flex-direction: row;
+        gap: 10%;
+    }
+}
+
+/* 
+    ##Device = Laptops, Desktops
+    ##Screen = B/w 1025px to 1280px
+  */
+@media (min-width: 1025px) and (max-width: 1280px) {
+    body {
+        padding-top: 4%;
+        font-size: 320%;
+    }
+
+    .container {
+        flex-direction: row;
+        gap: 10%;
+    }
+}
+
+/* 
+    ##Device = Tablets, Ipads (portrait)
+    ##Screen = B/w 768px to 1024px
+  */
+@media (min-width: 768px) and (max-width: 1024px) {
+    body {
+        padding-top: 4%;
+        font-size: 200%;
+    }
+
+    .container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+/* 
+    ##Device = Tablets, Ipads (landscape)
+    ##Screen = B/w 768px to 1024px
+  */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    body {
+        padding-top: 4%;
+        font-size: 240%;
+    }
+
+    .container {
+        flex-direction: row;
+        gap: 10%;
+    }
+}
+
+/* 
+    ##Device = Low Resolution Tablets, Mobiles (Landscape)
+    ##Screen = B/w 481px to 767px
+  */
+@media (min-width: 481px) and (max-width: 767px) {
+    body {
+        font-size: 150%;
+    }
+
+    .container {
+        flex-direction: row;
+        gap: 10%;
+    }
+}
+
+/* 
+    ##Device = Most of the Smartphones Mobiles (Portrait)
+    ##Screen = B/w 320px to 479px
+  */
+@media (min-width: 320px) and (max-width: 480px) {
+    body {
+        padding-top: 4%;
+        font-size: 190%;
+    }
+
+    .container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
-    line-height: 1;
+    height: 100dvh;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    padding: 5%;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    height: 100vh;
-    text-align: center;
-    font-size: 300%;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: azure;
+}
+
+#textInfo {
+    position: relative;
 }
 
 #clock {
-    float: left;
-    position: absolute;
-    border: 5px solid black;
-    margin-right: 50%;
-    width: 43%;
-    height: 88%;
-    border-radius: 50%;
+    position: relative;
+    aspect-ratio: 1 / 1;
+    height: 10em;
+    border: 0.3rem solid black;
+    border-radius: 100%;
     z-index: 0;
 }
 
-.minMark {
+/* min marks */
+:nth-child(1) {
+    --nth-child: 1
+}
+
+:nth-child(2) {
+    --nth-child: 2
+}
+
+:nth-child(3) {
+    --nth-child: 3
+}
+
+:nth-child(4) {
+    --nth-child: 4
+}
+
+:nth-child(5) {
+    --nth-child: 5
+}
+
+:nth-child(6) {
+    --nth-child: 6
+}
+
+:nth-child(7) {
+    --nth-child: 7
+}
+
+:nth-child(8) {
+    --nth-child: 8
+}
+
+:nth-child(9) {
+    --nth-child: 9
+}
+
+:nth-child(10) {
+    --nth-child: 10
+}
+
+:nth-child(11) {
+    --nth-child: 11
+}
+
+:nth-child(12) {
+    --nth-child: 12
+}
+
+:nth-child(13) {
+    --nth-child: 13
+}
+
+:nth-child(14) {
+    --nth-child: 14
+}
+
+:nth-child(15) {
+    --nth-child: 15
+}
+
+:nth-child(16) {
+    --nth-child: 16
+}
+
+:nth-child(17) {
+    --nth-child: 17
+}
+
+:nth-child(18) {
+    --nth-child: 18
+}
+
+:nth-child(19) {
+    --nth-child: 19
+}
+
+:nth-child(20) {
+    --nth-child: 20
+}
+
+:nth-child(21) {
+    --nth-child: 21
+}
+
+:nth-child(22) {
+    --nth-child: 22
+}
+
+:nth-child(23) {
+    --nth-child: 23
+}
+
+:nth-child(24) {
+    --nth-child: 24
+}
+
+/* hour marks */
+:nth-child(25) {
+    --nth-child: 25
+}
+
+:nth-child(26) {
+    --nth-child: 26
+}
+
+:nth-child(27) {
+    --nth-child: 27
+}
+
+:nth-child(28) {
+    --nth-child: 28
+}
+
+:nth-child(29) {
+    --nth-child: 29
+}
+
+:nth-child(30) {
+    --nth-child: 30
+}
+
+/* min mark */
+.mark {
     position: absolute;
-    border: 1px solid #333;
-    width: 95%;
-    top: 50%;
-    left: 2.5%;
+    border: 1px solid black;
+    width: 100%;
+    margin-top: 49.6%;
+    transform: rotateZ(calc((var(--nth-child) * 6deg)));
     z-index: 50;
 }
 
-#bottomCircle {
-    position: absolute;
-    background-color: azure;
-    width: 90%;
-    height: 90%;
-    top: 5.3%;
-    left: 5.3%;
-    border-radius: 50%;
-    z-index: 75;
-}
-
-.hourMark {
+/* hour mark */
+.mark:nth-of-type(5n) {
     position: absolute;
     border: 3px solid black;
-    width: 95%;
-    top: 50%;
-    left: 2.5%;
+    width: 100%;
+    margin-top: 49%;
     z-index: 75;
+    transform: rotateZ(calc((var(--nth-child) * 6deg)));
 }
 
-#middleCircle {
+.middleCircle {
     position: absolute;
-    background-color: azure;
+    background-color: white;
     width: 90%;
     height: 90%;
-    top: 5.4%;
-    left: 5.3%;
+    top: 5%;
+    left: 5%;
     border-radius: 50%;
     z-index: 96;
 }
 
-#topCircle {
-    position: absolute;
-    background-color: black;
-    width: 5%;
-    height: 5%;
-    top: 48%;
-    left: 48%;
-    border-radius: 50%;
-    z-index: 100;
+:nth-child(1) {
+    --nth-child: 1
+}
+
+:nth-child(2) {
+    --nth-child: 2
+}
+
+:nth-child(3) {
+    --nth-child: 3
+}
+
+:nth-child(4) {
+    --nth-child: 4
+}
+
+:nth-child(5) {
+    --nth-child: 5
+}
+
+:nth-child(6) {
+    --nth-child: 6
+}
+
+:nth-child(7) {
+    --nth-child: 7
+}
+
+:nth-child(8) {
+    --nth-child: 8
+}
+
+:nth-child(9) {
+    --nth-child: 9
+}
+
+:nth-child(10) {
+    --nth-child: 10
+}
+
+:nth-child(11) {
+    --nth-child: 11
+}
+
+:nth-child(12) {
+    --nth-child: 12
 }
 
 .hourNumber {
     position: absolute;
     color: black;
-    font-size: 125%;
+    left: 45%;
+    top: 45%;
+    width: 10%;
+    height: 10%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotateZ(calc((var(--nth-child) + 6)*calc(360/12)*1deg)) translateY(450%) rotateZ(calc((var(--nth-child) + 6)*calc(360/12)*-1deg));
     z-index: 100;
 }
 
-#num12 {
-    top: -4%;
-    left: 45%;
-}
-
-#num1 {
-    top: 1%;
-    left: 68%;
-}
-
-#num2 {
-    top: 15%;
-    left: 83%;
-}
-
-#num3 {
-    top: 35.5%;
-    left: 88%;
-}
-
-#num4 {
-    top: 55%;
-    left: 83%;
-}
-
-#num5 {
-    top: 70%;
-    left: 68%;
-}
-
-#num6 {
-    top: 75%;
-    left: 48%;
-}
-
-#num7 {
-    top: 70%;
-    left: 28%;
-}
-
-#num8 {
-    top: 56%;
-    left: 13%;
-}
-
-#num9 {
-    top: 35.5%;
-    left: 7%;
-}
-
-#num10 {
-    top: 15%;
-    left: 11.5%;
-}
-
-#num11 {
-    top: 1.5%;
-    left: 25%;
+#dot {
+    position: absolute;
+    background-color: black;
+    width: 4%;
+    height: 4%;
+    margin-top: 48%;
+    margin-left: 48%;
+    border-radius: 50%;
+    z-index: 100;
 }
 
 #hourHand {
@@ -146,8 +382,8 @@ body {
     background-color: black;
     height: 30%;
     width: 1.5%;
-    top: 19%;
-    left: 49%;
+    top: 20%;
+    left: 49.2%;
     z-index: 99;
     transform-origin: bottom;
 }
@@ -158,8 +394,8 @@ body {
     background-color: black;
     height: 42%;
     width: 0.9%;
-    top: 7.5%;
-    left: 49.8%;
+    top: 8%;
+    left: 49.6%;
     z-index: 97;
     transform-origin: bottom;
 }
@@ -170,13 +406,8 @@ body {
     background-color: red;
     height: 46%;
     width: 0.1%;
-    top: 4.1%;
-    left: 50.3%;
+    top: 4%;
+    left: 50%;
     z-index: 98;
     transform-origin: bottom;
-}
-
-#textInfo {
-    position: relative;
-    left: 25%;
 }

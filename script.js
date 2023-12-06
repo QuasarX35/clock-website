@@ -33,7 +33,7 @@ async function checkWeather() {
     var data = await response.json();
 
     console.log(data);
-    document.getElementById('cityNameAndTemp').textContent = `${data.name}, ${data.main.temp}°C`;
+    document.getElementById('cityNameAndTemp').textContent = `${data.name}, ${data.main.temp.toFixed(1)}°C`;
     document.getElementById('weather').textContent = `${data.weather[0].main}, ${data.weather[0].description}`;
     document.getElementById('humidity').textContent = `Humidity: ${data.main.humidity}%`;
     document.getElementById('wind').textContent = `Wind: ${data.wind.speed} km/h`;

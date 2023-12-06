@@ -11,70 +11,69 @@
 </head>
 
 <body>
-    <div id="clock">
-        <div style="transform: rotate(-84deg);" class="minMark" id="minMark1"></div>
-        <div style="transform: rotate(-78deg);" class="minMark" id="minMark2"></div>
-        <div style="transform: rotate(-72deg);" class="minMark" id="minMark3"></div>
-        <div style="transform: rotate(-66deg);" class="minMark" id="minMark4"></div>
-        <div style="transform: rotate(-54deg);" class="minMark" id="minMark5"></div>
-        <div style="transform: rotate(-48deg);" class="minMark" id="minMark6"></div>
-        <div style="transform: rotate(-42deg);" class="minMark" id="minMark7"></div>
-        <div style="transform: rotate(-36deg);" class="minMark" id="minMark8"></div>
-        <div style="transform: rotate(-24deg);" class="minMark" id="minMark9"></div>
-        <div style="transform: rotate(-18deg);" class="minMark" id="minMark10"></div>
-        <div style="transform: rotate(-12deg);" class="minMark" id="minMark11"></div>
-        <div style="transform: rotate(-6deg);" class="minMark" id="minMark12"></div>
-        <div style="transform: rotate(6deg);" class="minMark" id="minMark13"></div>
-        <div style="transform: rotate(12deg);" class="minMark" id="minMark14"></div>
-        <div style="transform: rotate(18deg);" class="minMark" id="minMark15"></div>
-        <div style="transform: rotate(24deg);" class="minMark" id="minMark16"></div>
-        <div style="transform: rotate(36deg);" class="minMark" id="minMark17"></div>
-        <div style="transform: rotate(42deg);" class="minMark" id="minMark18"></div>
-        <div style="transform: rotate(48deg);" class="minMark" id="minMark19"></div>
-        <div style="transform: rotate(54deg);" class="minMark" id="minMark20"></div>
-        <div style="transform: rotate(66deg);" class="minMark" id="minMark21"></div>
-        <div style="transform: rotate(72deg);" class="minMark" id="minMark22"></div>
-        <div style="transform: rotate(78deg);" class="minMark" id="minMark23"></div>
-        <div style="transform: rotate(84deg);" class="minMark" id="minMark24"></div>
+    <div class="container">
+        <div id="clock">
+            <div class="mark"></div>
+            <div class="mark"></div>
+            <div class="mark"></div>
+            <div class="mark"></div>
+            <div class="mark"></div>
+            <div class="mark"></div>
+            <div class="mark"></div>
+            <div class="mark"></div>
+            <div class="mark"></div>
+            <div class="mark"></div>
+            <div class="mark"></div>
+            <div class="mark"></div>
+            <div class="mark"></div>
+            <div class="mark"></div>
+            <div class="mark"></div>
+            <div class="mark"></div>
+            <div class="mark"></div>
+            <div class="mark"></div>
+            <div class="mark"></div>
+            <div class="mark"></div>
+            <div class="mark"></div>
+            <div class="mark"></div>
+            <div class="mark"></div>
+            <div class="mark"></div>
+            <div class="mark"></div>
+            <div class="mark"></div>
+            <div class="mark"></div>
+            <div class="mark"></div>
+            <div class="mark"></div>
+            <div class="mark"></div>
 
-        <div id="bottomCircle"></div>
+            <div class="middleCircle">
+                <span class="hourNumber">1</span>
+                <span class="hourNumber">2</span>
+                <span class="hourNumber">3</span>
+                <span class="hourNumber">4</span>
+                <span class="hourNumber">5</span>
+                <span class="hourNumber">6</span>
+                <span class="hourNumber">7</span>
+                <span class="hourNumber">8</span>
+                <span class="hourNumber">9</span>
+                <span class="hourNumber">10</span>
+                <span class="hourNumber">11</span>
+                <span class="hourNumber">12</span>
+            </div>
 
-        <div class="hourMark" id="hourMark6-12"></div>
-        <div style="transform: rotate(90deg);" class="hourMark" id="hourMark3-9"></div>
-        <div style="transform: rotate(-60deg);" class="hourMark" id="hourMark1-7"></div>
-        <div style="transform: rotate(-30deg);" class="hourMark" id="hourMark2-8"></div>
-        <div style="transform: rotate(30deg);" class="hourMark" id="hourMark4-10"></div>
-        <div style="transform: rotate(60deg);" class="hourMark" id="hourMark5-11"></div>
+            <div id="dot"></div>
 
-        <div id="middleCircle"></div>
-
-        <p class="hourNumber" id="num1">1</p>
-        <p class="hourNumber" id="num2">2</p>
-        <p class="hourNumber" id="num3">3</p>
-        <p class="hourNumber" id="num4">4</p>
-        <p class="hourNumber" id="num5">5</p>
-        <p class="hourNumber" id="num6">6</p>
-        <p class="hourNumber" id="num7">7</p>
-        <p class="hourNumber" id="num8">8</p>
-        <p class="hourNumber" id="num9">9</p>
-        <p class="hourNumber" id="num10">10</p>
-        <p class="hourNumber" id="num11">11</p>
-        <p class="hourNumber" id="num12">12</p>
-
-        <div id="topCircle"></div>
-
-        <div id="hourHand"></div>
-        <div id="minHand"></div>
-        <div id="secHand"></div>
-    </div>
-    <div id="textInfo">
-        <div style="font-size:250%;" id="time"></div>
-        <div id="date"></div>
-        <div id="cityNameAndTemp"></div>
-        <div style="font-size:80%;" id="weather"></div>
-        <br>
-        <div style="font-size:60%;" id="humidity"></div>
-        <div style="font-size:60%;" id="wind"></div>
+            <div id="hourHand"></div>
+            <div id="minHand"></div>
+            <div id="secHand"></div>
+        </div>
+        <div id="textInfo">
+            <div style="font-size: 200%;" id="time"></div>
+            <div id="date"></div>
+            <div id="cityNameAndTemp"></div>
+            <div style="font-size:80%;" id="weather"></div>
+            <hr>
+            <div style="font-size:80%;" id="humidity"></div>
+            <div style="font-size:80%;" id="wind"></div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
