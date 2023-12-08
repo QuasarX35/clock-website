@@ -1,26 +1,3 @@
-/*** Responsive Styles Tablet ***/
-@media all and (min-width: 1201px) {
-    
-}
-
-/*** Responsive Styles Smartphone Portrait */
-@media all and (min-width: 401px) and (max-width: 1200px) {
-    
-}
-
-@media all and (max-width: 400px) {
-    body {
-        padding-top: 7%;
-        font-size: 200%;
-    }
-
-    .container {
-        flex-direction: column;
-        gap: 2rem;
-    }
-}
-
-
 /* 
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops
@@ -120,10 +97,16 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    /* https://www.1001fonts.com/abraham-font.html */
+    font-family: Abraham;
+    src: url('fonts/1\ Abraham.otf');
+}
+
 body {
     height: 100dvh;
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     padding: 0;
     margin: 0;
 }
@@ -140,267 +123,121 @@ body {
     position: relative;
 }
 
-#clock {
+.clock {
     position: relative;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1;
     height: 10em;
-    border: 0.3rem solid black;
     border-radius: 100%;
     z-index: 0;
 }
 
+.braunClock {
+    display: none;
+    border: 0.1rem solid black;
+}
+
+.lemnosClock {
+    display: block;
+    background-color: #212325;
+    border: 1px solid rgb(119, 119, 119);
+
+    /* https://stackoverflow.com/questions/56674800/css-circles-outer-border-with-white-space-on-inside-of-element */
+    background-clip: content-box;
+    padding: 0.3rem;
+}
+
 /* min marks */
-:nth-child(1) {
-    --nth-child: 1
-}
-
-:nth-child(2) {
-    --nth-child: 2
-}
-
-:nth-child(3) {
-    --nth-child: 3
-}
-
-:nth-child(4) {
-    --nth-child: 4
-}
-
-:nth-child(5) {
-    --nth-child: 5
-}
-
-:nth-child(6) {
-    --nth-child: 6
-}
-
-:nth-child(7) {
-    --nth-child: 7
-}
-
-:nth-child(8) {
-    --nth-child: 8
-}
-
-:nth-child(9) {
-    --nth-child: 9
-}
-
-:nth-child(10) {
-    --nth-child: 10
-}
-
-:nth-child(11) {
-    --nth-child: 11
-}
-
-:nth-child(12) {
-    --nth-child: 12
-}
-
-:nth-child(13) {
-    --nth-child: 13
-}
-
-:nth-child(14) {
-    --nth-child: 14
-}
-
-:nth-child(15) {
-    --nth-child: 15
-}
-
-:nth-child(16) {
-    --nth-child: 16
-}
-
-:nth-child(17) {
-    --nth-child: 17
-}
-
-:nth-child(18) {
-    --nth-child: 18
-}
-
-:nth-child(19) {
-    --nth-child: 19
-}
-
-:nth-child(20) {
-    --nth-child: 20
-}
-
-:nth-child(21) {
-    --nth-child: 21
-}
-
-:nth-child(22) {
-    --nth-child: 22
-}
-
-:nth-child(23) {
-    --nth-child: 23
-}
-
-:nth-child(24) {
-    --nth-child: 24
-}
-
-/* hour marks */
-:nth-child(25) {
-    --nth-child: 25
-}
-
-:nth-child(26) {
-    --nth-child: 26
-}
-
-:nth-child(27) {
-    --nth-child: 27
-}
-
-:nth-child(28) {
-    --nth-child: 28
-}
-
-:nth-child(29) {
-    --nth-child: 29
-}
-
-:nth-child(30) {
-    --nth-child: 30
-}
-
-/* min mark */
-.mark {
+.braunClock>.mark {
     position: absolute;
-    border: 1px solid black;
-    width: 100%;
-    margin-top: 49.6%;
-    transform: rotateZ(calc((var(--nth-child) * 6deg)));
+    width: 0.3%;
+    height: 2.5%;
+    top: 1.5%;
+    left: 50%;
+    background-color: #333;
+    transform-origin: 0 1950%;
     z-index: 50;
 }
 
-/* hour mark */
-.mark:nth-of-type(5n) {
-    position: absolute;
-    border: 3px solid black;
-    width: 100%;
-    margin-top: 49%;
-    z-index: 75;
-    transform: rotateZ(calc((var(--nth-child) * 6deg)));
+/* hour marks */
+.braunClock>.mark:nth-of-type(5n + 2) {
+    background-color: black;
+    width: 0.5%;
+    height: 4%;
+    transform-origin: 0 1220%;
 }
 
-.middleCircle {
+.braunClock>.middleCircle {
     position: absolute;
+    border: 1px solid black;
+    opacity: 30%;
+    inset: 0;
+    margin: auto;
     background-color: white;
-    width: 90%;
-    height: 90%;
-    top: 5%;
-    left: 5%;
-    border-radius: 50%;
-    z-index: 96;
+    aspect-ratio: 1;
+    border-radius: 100%;
+    width: 72%;
+    box-shadow: inset 0.05rem 0.05rem 0.1rem;
+    z-index: 1;
 }
 
-:nth-child(1) {
-    --nth-child: 1
-}
-
-:nth-child(2) {
-    --nth-child: 2
-}
-
-:nth-child(3) {
-    --nth-child: 3
-}
-
-:nth-child(4) {
-    --nth-child: 4
-}
-
-:nth-child(5) {
-    --nth-child: 5
-}
-
-:nth-child(6) {
-    --nth-child: 6
-}
-
-:nth-child(7) {
-    --nth-child: 7
-}
-
-:nth-child(8) {
-    --nth-child: 8
-}
-
-:nth-child(9) {
-    --nth-child: 9
-}
-
-:nth-child(10) {
-    --nth-child: 10
-}
-
-:nth-child(11) {
-    --nth-child: 11
-}
-
-:nth-child(12) {
-    --nth-child: 12
-}
-
-.hourNumber {
+.braunClock>.hourNumber {
     position: absolute;
+    font-size: 80%;
+    letter-spacing: -0.1rem;
     color: black;
+    top: 45.5%;
     left: 45%;
-    top: 45%;
     width: 10%;
     height: 10%;
     text-align: center;
-    display: flex;
     justify-content: center;
     align-items: center;
-    transform: rotateZ(calc((var(--nth-child) + 6)*calc(360/12)*1deg)) translateY(450%) rotateZ(calc((var(--nth-child) + 6)*calc(360/12)*-1deg));
     z-index: 100;
 }
 
-#dot {
+.braunClock>#dot {
+    position: absolute;
+    /* https://www.youtube.com/shorts/9cSL5dP4rgM */
+    inset: 0;
+    margin: auto;
+    aspect-ratio: 1;
+    background-color: black;
+    width: 6%;
+    /* https://stackoverflow.com/questions/24744776/creating-bevel-effect-for-content-box */
+    box-shadow: 0 0 0.2rem, inset 0.2em 0.2em 0.2em 0 rgba(255, 255, 255, 0.5), inset -1em -1em 0.2em 0 rgba(0, 0, 0, 0.5);
+    border-radius: 100%;
+    z-index: 100;
+}
+
+.braunClock>#hourHand {
     position: absolute;
     background-color: black;
+    height: 35%;
     width: 4%;
-    height: 4%;
-    margin-top: 48%;
-    margin-left: 48%;
-    border-radius: 50%;
-    z-index: 100;
-}
-
-#hourHand {
-    position: absolute;
-    border: 5px solid black;
-    background-color: black;
-    height: 30%;
-    width: 1.5%;
-    top: 20%;
-    left: 49.2%;
+    top: 15%;
+    left: 48%;
+    border-top-right-radius: 0.2rem;
+    border-top-left-radius: 0.2rem;
+    box-shadow: 0 0 0.2rem;
     z-index: 99;
     transform-origin: bottom;
 }
 
-#minHand {
+.braunClock>#minHand {
     position: absolute;
-    border: 2px solid black;
     background-color: black;
-    height: 42%;
-    width: 0.9%;
-    top: 8%;
-    left: 49.6%;
+    height: 47%;
+    width: 2%;
+    top: 3%;
+    left: 48.9%;
+    border-top-right-radius: 0.2rem;
+    border-top-left-radius: 0.2rem;
+    box-shadow: 0 0 0.2rem;
     z-index: 97;
     transform-origin: bottom;
 }
 
-#secHand {
+/* #secHand {
     position: absolute;
     border: 1px solid red;
     background-color: red;
@@ -410,4 +247,100 @@ body {
     left: 50%;
     z-index: 98;
     transform-origin: bottom;
+} */
+
+.braunClock>.clockText1 {
+    position: absolute;
+    color: #000;
+    top: 25%;
+    left: 45%;
+    font-family: Abraham;
+    font-size: 40%;
+    font-weight: 500;
+    z-index: 3;
+}
+
+.braunClock>.clockText1>#A {
+    font-size: 150%;
+    margin: -9%;
+    font-weight: 100;
+}
+
+.braunClock>.clockText2 {
+    position: absolute;
+    color: #000;
+    top: 33%;
+    left: 48%;
+    font-size: 20%;
+    z-index: 3;
+}
+
+.lemnosClock>.hourNumber {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    aspect-ratio: 1;
+    width: 140%;
+    left: -20%;
+    z-index: 98;
+}
+
+.lemnosClock>.mark {
+    position: absolute;
+    width: 1.3%;
+    height: 2.2%;
+    top: 22%;
+    left: 50%;
+    background-color: #d0d6da;
+    transform-origin: 0 1300%;
+    z-index: 50;
+}
+
+.lemnosClock>#dot {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    aspect-ratio: 1;
+    background-color: #d0d6da;
+    width: 3.5%;
+    box-shadow: 0.1rem 0.1rem 0.1rem black;
+    border-radius: 100%;
+    z-index: 100;
+    opacity: 50%;
+}
+
+.lemnosClock>#hourHand {
+    position: absolute;
+    background-color: #d0d6da;
+    height: 30%;
+    width: 3%;
+    top: 29%;
+    left: 48.5%;
+    box-shadow: 0.1rem 0.1rem 0.2rem;
+    z-index: 98;
+    transform-origin: 50% 70%;
+}
+
+.lemnosClock>#minHand>#rectangle {
+    position: absolute;
+    background-color: #d0d6da;
+    height: 45%;
+    width: 2.3%;
+    top: 14%;
+    left: 48.8%;
+    /* https://stackoverflow.com/questions/38339605/how-to-have-two-elements-share-a-box-shadow */
+    filter: drop-shadow(0.2rem 0.2rem 0.6rem black);
+    z-index: 99;
+    transform-origin: 50% 80%;
+}
+
+.lemnosClock>#minHand>#circle {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    aspect-ratio: 1;
+    background-color: #d0d6da;
+    width: 5.2%;
+    border-radius: 100%;
+    z-index: 99;
 }

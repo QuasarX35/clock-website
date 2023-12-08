@@ -12,52 +12,16 @@
 
 <body>
     <div class="container">
-        <div id="clock">
-            <div class="mark"></div>
-            <div class="mark"></div>
-            <div class="mark"></div>
-            <div class="mark"></div>
-            <div class="mark"></div>
-            <div class="mark"></div>
-            <div class="mark"></div>
-            <div class="mark"></div>
-            <div class="mark"></div>
-            <div class="mark"></div>
-            <div class="mark"></div>
-            <div class="mark"></div>
-            <div class="mark"></div>
-            <div class="mark"></div>
-            <div class="mark"></div>
-            <div class="mark"></div>
-            <div class="mark"></div>
-            <div class="mark"></div>
-            <div class="mark"></div>
-            <div class="mark"></div>
-            <div class="mark"></div>
-            <div class="mark"></div>
-            <div class="mark"></div>
-            <div class="mark"></div>
-            <div class="mark"></div>
-            <div class="mark"></div>
-            <div class="mark"></div>
-            <div class="mark"></div>
-            <div class="mark"></div>
-            <div class="mark"></div>
+        <!-- https://stackoverflow.com/questions/1947263/using-an-html-button-to-call-a-javascript-function -->
+        <div onclick="showLemnosClock();" class="clock braunClock">
+            <span class="clockText1">
+                <span id="BR">BR</span>
+                <span id="A">A</span>
+                <span id="UN">UN</span>
+            </span>
+            <div class="clockText2">quartz</div>
 
-            <div class="middleCircle">
-                <span class="hourNumber">1</span>
-                <span class="hourNumber">2</span>
-                <span class="hourNumber">3</span>
-                <span class="hourNumber">4</span>
-                <span class="hourNumber">5</span>
-                <span class="hourNumber">6</span>
-                <span class="hourNumber">7</span>
-                <span class="hourNumber">8</span>
-                <span class="hourNumber">9</span>
-                <span class="hourNumber">10</span>
-                <span class="hourNumber">11</span>
-                <span class="hourNumber">12</span>
-            </div>
+            <div class="middleCircle"></div>
 
             <div id="dot"></div>
 
@@ -65,6 +29,20 @@
             <div id="minHand"></div>
             <div id="secHand"></div>
         </div>
+
+        <div onclick="showBraunClock();" class="clock lemnosClock">
+            <img src="images\lemnosNums.svg" alt="clock numbers" class="hourNumber">
+
+            <div id="dot"></div>
+            
+            <div id="hourHand"></div>
+            <div id="minHand">
+                <div id="rectangle"></div>
+                <div id="circle"></div>
+            </div>
+            <div id="secHand"></div>
+        </div>
+
         <div id="textInfo">
             <div style="font-size: 200%;" id="time"></div>
             <div id="date"></div>
