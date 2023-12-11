@@ -108,7 +108,11 @@ body {
     text-align: center;
     font-family: Helvetica, Arial, sans-serif;
     padding: 0;
-    margin: 0;
+}
+
+.hex {
+    -webkit-clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+    clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
 }
 
 .container {
@@ -137,13 +141,20 @@ body {
 }
 
 .lemnosClock {
-    display: block;
+    display: none;
     background-color: #212325;
     border: 1px solid rgb(119, 119, 119);
 
     /* https://stackoverflow.com/questions/56674800/css-circles-outer-border-with-white-space-on-inside-of-element */
     background-clip: content-box;
     padding: 0.3rem;
+}
+
+.yamazakiClock {
+    display: block;
+    background-image: url(images/yamazakiWood.png);
+    background-color: #514d4a;
+    border: 0.3rem solid #514d4a;
 }
 
 /* min marks */
@@ -204,7 +215,7 @@ body {
     background-color: black;
     width: 6%;
     /* https://stackoverflow.com/questions/24744776/creating-bevel-effect-for-content-box */
-    box-shadow: 0 0 0.2rem, inset 0.2em 0.2em 0.2em 0 rgba(255, 255, 255, 0.5), inset -1em -1em 0.2em 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0.2rem, inset 0.2rem 0.2rem 0.4rem 0 rgba(255, 255, 255, 0.5), inset -1rem -1rem 0.2rem 0 rgba(0, 0, 0, 0.5);
     border-radius: 100%;
     z-index: 100;
 }
@@ -343,4 +354,62 @@ body {
     width: 5.2%;
     border-radius: 100%;
     z-index: 99;
+}
+
+.yamazakiClock>.mark {
+    position: absolute;
+    width: 1%;
+    height: 14.1%;
+    left: 49.8%;
+    border-radius: 1.5px;
+    box-shadow: 0.2rem 0 0.5rem black;
+    background-color: #514d4a;
+    transform-origin: 0% 356%;
+    z-index: 50;
+}
+
+.yamazakiClock>#bottomHex {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    aspect-ratio: 1;
+    background-color: #E1C16E;
+    width: 5.5%;
+    border-radius: 100%;
+}
+
+.yamazakiClock>#topDot {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    aspect-ratio: 1;
+    background-color: black;
+    width: 4%;
+    box-shadow: 0.1rem 0.1rem 0.1rem rgb(148, 148, 148), inset 0.2rem 0.05rem 0.1rem 0 rgba(255, 255, 255, 0.5), inset 0 0 2rem 0 black;
+    border-radius: 100%;
+    z-index: 100;
+}
+
+.yamazakiClock>#hourHand {
+    position: absolute;
+    background-color: black;
+    height: 30%;
+    width: 2.4%;
+    top: 20%;
+    left: 48.7%;
+    box-shadow: 0 0 0.2rem;
+    z-index: 99;
+    transform-origin: bottom;
+}
+
+.yamazakiClock>#minHand {
+    position: absolute;
+    background-color: black;
+    height: 35%;
+    width: 1.2%;
+    top: 15%;
+    left: 49.5%;
+    box-shadow: 0.1rem 0.1rem 0.2rem;
+    z-index: 97;
+    transform-origin: bottom;
 }

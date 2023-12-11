@@ -1,7 +1,8 @@
 const clock = document.querySelector('.clock');
 const braunClock = document.querySelector('.braunClock');
 const lemnosClock = document.querySelector('.lemnosClock');
-const clocks = [braunClock, lemnosClock];
+const yamazakiClock = document.querySelector('.yamazakiClock');
+const clocks = [braunClock, lemnosClock, yamazakiClock];
 
 function showBraunClock() {
     clocks.forEach(element => {
@@ -17,6 +18,14 @@ function showLemnosClock() {
     lemnosClock.style.display = 'block';
 }
 
+function showYamazakiClock() {
+    clocks.forEach(element => {
+        element.style.display = 'none';
+    });
+    yamazakiClock.style.display = 'block';
+}
+
+
 function drawMarks() {
     // braun clock
     const braunMarks = braunClock.getElementsByClassName('mark');
@@ -30,6 +39,13 @@ function drawMarks() {
     for (var i = 0; i < 60; i++) {
         lemnosClock.innerHTML += "<div class='mark'></div>";
         lemnosMarks[i].style.transform = `rotate(${6 * i}deg)`;
+    }
+
+    // lemnos clock
+    const yamazakiMarks = yamazakiClock.getElementsByClassName('mark');
+    for (var i = 0; i < 12; i++) {
+        yamazakiClock.innerHTML += "<div class='mark'></div>";
+        yamazakiMarks[i].style.transform = `rotate(${30 * i}deg) translateX(-40%)`;
     }
 }
 
