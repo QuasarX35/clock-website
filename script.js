@@ -2,7 +2,8 @@ const clock = document.querySelector('.clock');
 const braunClock = document.querySelector('.braunClock');
 const lemnosClock = document.querySelector('.lemnosClock');
 const yamazakiClock = document.querySelector('.yamazakiClock');
-const clocks = [braunClock, lemnosClock, yamazakiClock];
+const newgateClock = document.querySelector('.newgateClock');
+const clocks = [braunClock, lemnosClock, yamazakiClock, newgateClock];
 
 function showBraunClock() {
     clocks.forEach(element => {
@@ -25,6 +26,12 @@ function showYamazakiClock() {
     yamazakiClock.style.display = 'block';
 }
 
+function showNewgateClock() {
+    clocks.forEach(element => {
+        element.style.display = 'none';
+    });
+    newgateClock.style.display = 'block';
+}
 
 function drawMarks() {
     // braun clock
@@ -41,22 +48,38 @@ function drawMarks() {
         lemnosMarks[i].style.transform = `rotate(${6 * i}deg)`;
     }
 
-    // lemnos clock
+    // yamazaki clock
     const yamazakiMarks = yamazakiClock.getElementsByClassName('mark');
     for (var i = 0; i < 12; i++) {
         yamazakiClock.innerHTML += "<div class='mark'></div>";
         yamazakiMarks[i].style.transform = `rotate(${30 * i}deg) translateX(-40%)`;
     }
+
+    // newgate clock
+    const newgateMarks = newgateClock.getElementsByClassName('mark');
+    for (var i = 0; i < 60; i++) {
+        newgateClock.innerHTML += "<div class='mark'></div>";
+        newgateMarks[i].style.transform = `rotate(${6 * i - 0.5}deg)`;
+    }
 }
 
 function drawNumbers() {
-    // braun clock
     for (var i = 1; i <= 12; i++) {
+        // braun clock
         const hourNumber = document.createElement('span');
         hourNumber.classList.add('hourNumber');
         hourNumber.textContent = i;
         hourNumber.style.transform = `rotateZ(calc((${i} + 6) * calc(360/12) * 1deg)) translateY(410%) rotateZ(calc((${i} + 6) * calc(360/12) * -1deg))`;
         braunClock.appendChild(hourNumber);
+    }
+    
+    for (var i = 1; i <= 12; i++) {
+        // newgate clock
+        const hourNumber = document.createElement('span');
+        hourNumber.classList.add('hourNumber');
+        hourNumber.textContent = i;
+        hourNumber.style.transform = `rotateZ(calc((${i} + 6) * calc(360/12) * 1deg)) translateY(360%) rotateZ(calc((${i} + 6) * calc(360/12) * -1deg))`;
+        newgateClock.appendChild(hourNumber);
     }
 }
 

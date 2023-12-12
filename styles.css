@@ -103,6 +103,12 @@
     src: url('fonts/1\ Abraham.otf');
 }
 
+@font-face {
+    /* https://www.azfonts.net/fonts/rubicon/regular-314926 */
+    font-family: rubicon;
+    src: url('fonts/rubicon.ttf');
+}
+
 body {
     height: 100dvh;
     text-align: center;
@@ -151,10 +157,27 @@ body {
 }
 
 .yamazakiClock {
-    display: block;
+    display: none;
     background-image: url(images/yamazakiWood.png);
     background-color: #514d4a;
     border: 0.3rem solid #514d4a;
+}
+
+.newgateClock {
+    display: block;
+    border: 0.1rem solid #d4b44a;
+    background: linear-gradient(to bottom left, #f8d447 0%, #f8d447 20%, #d4b44a 30%, #d4b44a 80%, #f8d447 90%, #f8d447 100%);
+    box-shadow: 0 0 0.3rem rgba(0, 0, 0, 0.3), 0 0 0.1rem #ece0b3 inset;
+    border-radius: 100%;
+}
+
+.clockText {
+    position: absolute;
+    color: #000;
+    top: 32%;
+    left: 41%;
+    font-size: 30%;
+    font-weight: 520;
 }
 
 /* min marks */
@@ -260,7 +283,7 @@ body {
     transform-origin: bottom;
 } */
 
-.braunClock>.clockText1 {
+.braunClock>#clockText1 {
     position: absolute;
     color: #000;
     top: 25%;
@@ -271,13 +294,13 @@ body {
     z-index: 3;
 }
 
-.braunClock>.clockText1>#A {
+.braunClock>#clockText1>#A {
     font-size: 150%;
     margin: -9%;
     font-weight: 100;
 }
 
-.braunClock>.clockText2 {
+.braunClock>#clockText2 {
     position: absolute;
     color: #000;
     top: 33%;
@@ -410,6 +433,137 @@ body {
     top: 15%;
     left: 49.5%;
     box-shadow: 0.1rem 0.1rem 0.2rem;
+    z-index: 97;
+    transform-origin: bottom;
+}
+
+.line {
+    position: absolute;
+    z-index: 999;
+    background-color: blue;
+    height: 100%;
+    width: 0.5%;
+    inset: 0;
+    margin: auto;
+    opacity: 10%;
+}
+
+.line:nth-child(5n+1) {
+    background-color: red;
+}
+
+.newgateClock>#innerCircle {
+    position: absolute;
+    background: white;
+    aspect-ratio: 1;
+    width: 93%;
+    inset: 0;
+    margin: auto;
+    border-radius: 100%;
+    z-index: 1;
+}
+
+.newgateClock>.mark {
+    position: absolute;
+    width: 0.3%;
+    height: 2.3%;
+    top: 6.6%;
+    left: 50%;
+    background-color: black;
+    transform-origin: 0 1900%;
+    z-index: 2;
+}
+
+.newgateClock>.mark:nth-of-type(5n + 4) {
+    background-color: black;
+    width: 1%;
+    height: 2.6%;
+    transform-origin: 0 1690%;
+    transform: translate(1rem, 1rem);
+}
+
+.newgateClock>.hourNumber {
+    position: absolute;
+    font-size: 110%;
+    font-family: rubicon;
+    color: black;
+    inset: 0;
+    margin: auto;
+    height: 10%;
+    bottom: 3%;
+    z-index: 100;
+}
+
+.newgateClock>.clockText {
+    position: absolute;
+    color: #000;
+    top: 32%;
+    left: 41%;
+    font-size: 30%;
+    font-weight: 520;
+    z-index: 3;
+}
+
+.newgateClock>#clockText2 {
+    position: absolute;
+    color: #000;
+    top: 65%;
+    left: 47.5%;
+    font-size: 35%;
+    font-weight: 540;
+    aspect-ratio: 1;
+    height: 5%;
+    border-radius: 100%;
+    border: 0.1rem solid black;
+    z-index: 3;
+}
+
+.newgateClock>#bottomDot {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    aspect-ratio: 1;
+    background-color: black;
+    width: 7%;
+    border-radius: 100%;
+    z-index: 2;
+}
+
+.newgateClock>#topDot {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    aspect-ratio: 1;
+    background-color: black;
+    width: 4%;
+    border-radius: 100%;
+    z-index: 100;
+}
+
+.newgateClock>#hourHand {
+    position: absolute;
+    background-color: black;
+    --length: 28%;
+    inset: 0;
+    margin: auto;
+    height: var(--length);
+    width: 3%;
+    bottom: var(--length);
+    box-shadow: 0 0 0.1rem;
+    z-index: 99;
+    transform-origin: bottom;
+}
+
+.newgateClock>#minHand {
+    position: absolute;
+    background-color: black;
+    --length: 42%;
+    inset: 0;
+    margin: auto;
+    height: var(--length);
+    width: 1.8%;
+    bottom: var(--length);
+    box-shadow: 0 0 0.1rem;
     z-index: 97;
     transform-origin: bottom;
 }
