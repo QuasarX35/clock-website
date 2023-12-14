@@ -1,65 +1,45 @@
-const clock = document.querySelector('.clock');
 const braunClock = document.querySelector('.braunClock');
 const lemnosClock = document.querySelector('.lemnosClock');
 const yamazakiClock = document.querySelector('.yamazakiClock');
 const newgateClock = document.querySelector('.newgateClock');
-const clocks = [braunClock, lemnosClock, yamazakiClock, newgateClock];
+const bankerClock = document.querySelector('.bankerClock');
+const clocks = document.querySelectorAll('.clock');
 
-function showBraunClock() {
-    clocks.forEach(element => {
-        element.style.display = 'none';
-    });
-    braunClock.style.display = 'block';
-}
+// start at braun clock
+var currentClock = 0;
+clocks[currentClock].style.display = 'block';
 
-function showLemnosClock() {
-    clocks.forEach(element => {
-        element.style.display = 'none';
-    });
-    lemnosClock.style.display = 'block';
-}
-
-function showYamazakiClock() {
-    clocks.forEach(element => {
-        element.style.display = 'none';
-    });
-    yamazakiClock.style.display = 'block';
-}
-
-function showNewgateClock() {
-    clocks.forEach(element => {
-        element.style.display = 'none';
-    });
-    newgateClock.style.display = 'block';
+function nextClock() {
+    clocks[currentClock].style.display = 'none';
+    if (currentClock == clocks.length - 1) {
+        currentClock = 0;
+    } else {
+        currentClock++;
+    }
+    clocks[currentClock].style.display = `block`;
 }
 
 function drawMarks() {
-    // braun clock
     const braunMarks = braunClock.getElementsByClassName('mark');
-    for (var i = 0; i < 60; i++) {
-        braunClock.innerHTML += "<div class='mark'></div>";
-        braunMarks[i].style.transform = `rotate(${6 * i}deg)`;
-    }
-
-    // lemnos clock
     const lemnosMarks = lemnosClock.getElementsByClassName('mark');
-    for (var i = 0; i < 60; i++) {
-        lemnosClock.innerHTML += "<div class='mark'></div>";
-        lemnosMarks[i].style.transform = `rotate(${6 * i}deg)`;
-    }
-
-    // yamazaki clock
     const yamazakiMarks = yamazakiClock.getElementsByClassName('mark');
-    for (var i = 0; i < 12; i++) {
-        yamazakiClock.innerHTML += "<div class='mark'></div>";
-        yamazakiMarks[i].style.transform = `rotate(${30 * i}deg) translateX(-40%)`;
-    }
-
-    // newgate clock
     const newgateMarks = newgateClock.getElementsByClassName('mark');
     for (var i = 0; i < 60; i++) {
+        // braun clock
+        braunClock.innerHTML += "<div class='mark'></div>";
+        braunMarks[i].style.transform = `rotate(${6 * i}deg)`;
+
+        // lemnos clock
+        lemnosClock.innerHTML += "<div class='mark'></div>";
+        lemnosMarks[i].style.transform = `rotate(${6 * i}deg)`;
+
+        // yamazaki clock
+        yamazakiClock.innerHTML += "<div class='mark'></div>";
+        yamazakiMarks[i].style.transform = `rotate(${30 * i}deg`;
+
+        // newgate clock
         newgateClock.innerHTML += "<div class='mark'></div>";
-        newgateMarks[i].style.transform = `rotate(${6 * i - 0.5}deg)`;
+        newgateMarks[i].style.transform = `rotate(${6 * i}deg)`;
     }
 }
 
@@ -69,25 +49,53 @@ function drawNumbers() {
         const hourNumber = document.createElement('span');
         hourNumber.classList.add('hourNumber');
         hourNumber.textContent = i;
-        hourNumber.style.transform = `rotateZ(calc((${i} + 6) * calc(360/12) * 1deg)) translateY(410%) rotateZ(calc((${i} + 6) * calc(360/12) * -1deg))`;
+        hourNumber.style.transform = `rotateZ(calc((${i} + 6) * calc(360/12) * 1deg)) translateY(415%) rotateZ(calc((${i} + 6) * calc(360/12) * -1deg))`;
         braunClock.appendChild(hourNumber);
     }
-    
+
     for (var i = 1; i <= 12; i++) {
         // newgate clock
         const hourNumber = document.createElement('span');
         hourNumber.classList.add('hourNumber');
         hourNumber.textContent = i;
-        hourNumber.style.transform = `rotateZ(calc((${i} + 6) * calc(360/12) * 1deg)) translateY(360%) rotateZ(calc((${i} + 6) * calc(360/12) * -1deg))`;
+        hourNumber.style.transform = `rotateZ(calc((${i} + 6) * calc(360/12) * 1deg)) translateY(365%) rotateZ(calc((${i} + 6) * calc(360/12) * -1deg))`;
         newgateClock.appendChild(hourNumber);
+    }
+
+    for (var i = 1; i <= 12; i++) {
+        // banker clock
+        const hourNumber = document.createElement('span');
+        hourNumber.classList.add('hourNumber');
+        hourNumber.style.transform = `rotate(calc((${i} + 6) * calc(360/12) * 1deg)) translateY(140%)`;
+        for (var j = 0; j < 12; j++) {
+            const square = document.createElement('div');
+            square.classList.add('square');
+            square.style.transform = `translateY(${j * 110}%)`;
+            if (j == i - 1) {
+                square.style.backgroundColor = `black`;
+            }
+            hourNumber.appendChild(square);
+        }
+        bankerClock.appendChild(hourNumber);
     }
 }
 
+function showAlignmentLines() {
+    clocks.forEach(element => {
+        for (var i = 0; i < 30; i++) {
+            const line = document.createElement('div');
+            line.classList.add('alignmentLine');
+            line.style.backgroundColor = (i % 5 == 0) ? `red` : `blue`;
+            line.style.transform = `rotate(${i * 6}deg)`;
+            element.appendChild(line);
+        }
+    });
+}
 
 function updateClock() {
-    const secondHand = document.querySelectorAll("[id='secHand']");
-    const minHand = document.querySelectorAll("[id='minHand']");
-    const hourHand = document.querySelectorAll("[id='hourHand']");
+    const secondHand = document.querySelectorAll(".secHand");
+    const minHand = document.querySelectorAll(".minHand");
+    const hourHand = document.querySelectorAll(".hourHand");
 
     const now = new Date();
 
@@ -100,11 +108,7 @@ function updateClock() {
     const minutes = now.getMinutes();
     const minuteDeg = (minutes / 60) * 360 + (seconds / 60) * 6;
     minHand.forEach(element => {
-        if (!(element.parentNode == lemnosClock)) {
-            element.style.transform = `rotate(${minuteDeg}deg)`;
-        } else {
-            document.getElementById('rectangle').style.transform = `rotate(${minuteDeg}deg)`;
-        }
+        element.style.transform = `rotate(${minuteDeg}deg)`;
     });
 
     const hours = now.getHours();
@@ -143,3 +147,4 @@ drawMarks();
 drawNumbers();
 setInterval(update, 1000);
 update(); // Initial update
+// showAlignmentLines(); // for checking alignment only

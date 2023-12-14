@@ -13,87 +13,65 @@
 <body>
     <div class="container">
         <!-- https://stackoverflow.com/questions/1947263/using-an-html-button-to-call-a-javascript-function -->
-        <div onclick="showLemnosClock();" class="clock braunClock">
-            <span class="clockText" id="clockText1">
-                <span id="BR">BR</span>
-                <span id="A">A</span>
-                <span id="UN">UN</span>
-            </span>
-            <div class="clockText" id="clockText2">quartz</div>
+        <div onclick="nextClock();" class="circle clock braunClock">
+            <div class="circle middleCircle"></div>
 
-            <div class="middleCircle"></div>
+            <div class="mark"></div>
 
-            <div id="dot"></div>
+            <div class="clockText">
+                <!-- https://stackoverflow.com/questions/5078239/how-to-remove-the-space-between-inline-inline-block-elements -->
+                <span class="text1">BR</span><span class="text1" id="A">A</span><span class="text1">UN</span>
+                <br>
+                <span class="text2">quartz</span>
+            </div>
 
-            <div id="hourHand"></div>
-            <div id="minHand"></div>
-            <div id="secHand"></div>
+            <div class="hourHand"></div>
+            <div class="minHand"></div>
+            <div class="circle dot"></div>
         </div>
 
-        <div onclick="showYamazakiClock();" class="clock lemnosClock">
+        <div onclick="nextClock();" class="circle clock lemnosClock">
             <img src="images\lemnosNums.svg" alt="clock numbers" class="hourNumber">
 
-            <div id="dot"></div>
-            
-            <div id="hourHand"></div>
-            <div id="minHand">
-                <div id="rectangle"></div>
-                <div id="circle"></div>
-            </div>
-            <div id="secHand"></div>
+            <div class="mark"></div>
+
+            <div class="hourHand"></div>
+            <div class="minHand"></div>
+            <div class="circle minHandDot"></div>
+            <div class="circle dot"></div>
         </div>
 
-        <div onclick="showNewgateClock();" class="clock yamazakiClock">
-            <div class="hex" id="bottomHex"></div>
-            <div id="topDot"></div>
-            
-            <div id="hourHand"></div>
-            <div id="minHand"></div>
-            <div id="secHand"></div>
+        <div onclick="nextClock();" class="circle clock yamazakiClock">
+            <div class="mark"></div>
+
+            <div class="hexagon bottomHexagon"></div>
+
+            <div class="hourHand"></div>
+            <div class="minHand"></div>
+            <div class="circle dot"></div>
         </div>
 
-        <div onclick="showBraunClock();" class="clock newgateClock">
-            <!-- <div class="line"></div>
-            <div style="transform: rotate(6deg)" class="line"></div>
-            <div style="transform: rotate(12deg)" class="line"></div>
-            <div style="transform: rotate(18deg)" class="line"></div>
-            <div style="transform: rotate(24deg)" class="line"></div>
-            <div style="transform: rotate(30deg)" class="line"></div>
-            <div style="transform: rotate(36deg)" class="line"></div>
-            <div style="transform: rotate(42deg)" class="line"></div>
-            <div style="transform: rotate(48deg)" class="line"></div>
-            <div style="transform: rotate(54deg)" class="line"></div>
-            <div style="transform: rotate(60deg)" class="line"></div>
-            <div style="transform: rotate(66deg)" class="line"></div>
-            <div style="transform: rotate(72deg)" class="line"></div>
-            <div style="transform: rotate(78deg)" class="line"></div>
-            <div style="transform: rotate(84deg)" class="line"></div>
-            <div style="transform: rotate(90deg)" class="line"></div>
-            <div style="transform: rotate(96deg)" class="line"></div>
-            <div style="transform: rotate(102deg)" class="line"></div>
-            <div style="transform: rotate(108deg)" class="line"></div>
-            <div style="transform: rotate(114deg)" class="line"></div>
-            <div style="transform: rotate(120deg)" class="line"></div>
-            <div style="transform: rotate(126deg)" class="line"></div>
-            <div style="transform: rotate(132deg)" class="line"></div>
-            <div style="transform: rotate(138deg)" class="line"></div>
-            <div style="transform: rotate(144deg)" class="line"></div>
-            <div style="transform: rotate(150deg)" class="line"></div>
-            <div style="transform: rotate(156deg)" class="line"></div>
-            <div style="transform: rotate(162deg)" class="line"></div>
-            <div style="transform: rotate(168deg)" class="line"></div>
-            <div style="transform: rotate(174deg)" class="line"></div> -->
+        <div onclick="nextClock();" class="circle clock newgateClock">
+            <div class="circle middleCircle"></div>
 
-            <div id="innerCircle"></div>
-            <div class="clockText">N E W G A T E</div>
-            <div class="clockText" id="clockText2">N</div>
-            
-            <div id="bottomDot"></div>
-            <div id="topDot"></div>
+            <div class="mark"></div>
 
-            <div id="hourHand"></div>
-            <div id="minHand"></div>
-            <div id="secHand"></div>
+            <div class="clockText text1">N E W G A T E</div>
+            <div class="clockText circle text2">N</div>
+
+            <div class="circle bottomDot"></div>
+            <div class="hourHand"></div>
+            <div class="minHand"></div>
+            <div class="circle dot topDot"></div>
+        </div>
+
+        <div onclick="nextClock();" class="circle clock bankerClock">
+            <div class="circle middleCircle"></div>
+            <div class="clockText">ARNE JACOBSEN</div>
+            <div class="circle dot"></div>
+
+            <div class="hourHand"></div>
+            <div class="minHand"></div>
         </div>
 
         <div id="textInfo">

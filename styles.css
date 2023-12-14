@@ -1,3 +1,7 @@
+/* -------------------------------------------------------------------------- */
+/*              Media Queries for different browsers and devices              */
+/* -------------------------------------------------------------------------- */
+
 /* 
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops
@@ -97,28 +101,59 @@
     box-sizing: border-box;
 }
 
+/* -------------------------------------------------------------------------- */
+/*                             Main HTML Elements                             */
+/* -------------------------------------------------------------------------- */
+
+/* https://www.hacksoft.io/blog/using-multiple-font-files-the-right-way */
 @font-face {
     /* https://www.1001fonts.com/abraham-font.html */
     font-family: Abraham;
     src: url('fonts/1\ Abraham.otf');
+    font-style: normal;
+    font-weight: 500;
 }
 
 @font-face {
     /* https://www.azfonts.net/fonts/rubicon/regular-314926 */
     font-family: rubicon;
-    src: url('fonts/rubicon.ttf');
+    src: url('fonts/rubicon.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    /* https://arnejacobsen.com/works/typography/ */
+    font-family: aj-regular;
+    src: url('fonts/aj-regular-web.woff') format('woff');
+    font-style: normal;
+    font-weight: 520;
 }
 
 body {
+    font-family: Helvetica, Arial, sans-serif;
     height: 100dvh;
     text-align: center;
-    font-family: Helvetica, Arial, sans-serif;
     padding: 0;
 }
 
-.hex {
+:root {
+    --handLength: 50%;
+    --transformY: 100%;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                              Reusable Elements                             */
+/* -------------------------------------------------------------------------- */
+
+.hexagon {
     -webkit-clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
     clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+}
+
+.circle {
+    border-radius: 100%;
+    aspect-ratio: 1;
 }
 
 .container {
@@ -134,436 +169,407 @@ body {
 }
 
 .clock {
+    display: none;
     position: relative;
-    aspect-ratio: 1;
     height: 10em;
-    border-radius: 100%;
     z-index: 0;
 }
 
-.braunClock {
-    display: none;
-    border: 0.1rem solid black;
+.clock:hover {
+    cursor: pointer;
 }
+
+/* set all child elements of the clock class to be centered */
+.clock > * {
+    /* https://www.youtube.com/shorts/9cSL5dP4rgM */
+    position: absolute;
+    inset: 0;
+    margin: auto;
+}
+
+/* used to check if marks align on with specific angles on the clock */
+.alignmentLine {
+    z-index: 999;
+    width: 0.5%;
+    opacity: 10%;
+}
+
+/* template for checking transformation origin of elements */
+/* :root {
+    --transformY: 100%;
+} */
+/* *::after {
+    position: absolute;
+    left: 50%;
+    top: var(--transformY);
+    aspect-ratio: 1;
+    width: 15px;
+    content: '';
+    background-color: orange;
+    border-radius: 100%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+} */
+
+.middleCircle {
+    z-index: 1;
+}
+
+.mark {
+    z-index: 2;
+}
+
+.hourNumber {
+    z-index: 2;
+}
+
+/* clock name, company, etc. */
+.clockText {
+    text-align: center;
+    z-index: 2;
+}
+
+.hourHand {
+    width: 3.5%;
+    height: var(--handLength);
+    bottom: var(--handLength);
+    z-index: 3;
+}
+
+.minHand {
+    width: 2%;
+    height: var(--handLength);
+    bottom: var(--handLength);
+    z-index: 4;
+}
+
+.secHand {
+    width: 2%;
+    height: var(--handLength);
+    bottom: var(--handLength);
+    z-index: 5;
+}
+
+.dot {
+    z-index: 6;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                   Clocks                                   */
+/* -------------------------------------------------------------------------- */
+
+/* -------------------------- Braun BC06 Wall Clock ------------------------- */
+
+.braunClock {
+    border: 0.01rem solid rgb(110, 110, 110);
+}
+
+.braunClock>.mark {
+    background-color: #757575;
+    width: 0.2%;
+    height: 2.5%;
+    bottom: 95%;
+    transform-origin: 0.06rem 1950%;
+}
+
+.braunClock>.mark:nth-of-type(5n + 1) {
+    background-color: black;
+    width: 0.5%;
+    height: 3.5%;
+    bottom: 94.5%;
+    transform-origin: 0.06rem 1400%;
+}
+
+.braunClock>.hourNumber {
+    font-size: 80%;
+    letter-spacing: -0.4rem;
+    height: 10%;
+    /* set top and right position */
+    inset: 1% 1% 0 0;
+}
+
+.braunClock>.middleCircle {
+    border: 1px solid rgb(189, 189, 189);
+    width: 74%;
+    box-shadow: inset 0.05rem 0.05rem 0.1rem rgb(165, 165, 165);
+    z-index: 1;
+}
+
+.braunClock .clockText {
+    top: 27%;
+    font-size: 40%;
+    line-height: 100%;
+}
+
+.braunClock .text1 {
+    font-family: Abraham;
+    letter-spacing: 0.05rem;
+}
+
+.braunClock>.clockText>#A {
+    font-size: 140%;
+}
+
+.braunClock .text2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 55%;
+}
+
+.braunClock>.hourHand {
+    background-color: black;
+    --handLength: 35.5%;
+    border-top-right-radius: 0.2rem;
+    border-top-left-radius: 0.2rem;
+    box-shadow: 0 0 0.1rem;
+    transform-origin: bottom;
+}
+
+.braunClock>.minHand {
+    background-color: black;
+    --handLength: 47%;
+    border-top-right-radius: 0.2rem;
+    border-top-left-radius: 0.2rem;
+    box-shadow: 0 0 0.1rem;
+    transform-origin: bottom;
+}
+
+.braunClock>.dot {
+    background-color: black;
+    width: 6%;
+    /* https://stackoverflow.com/questions/24744776/creating-bevel-effect-for-content-box */
+    box-shadow: 0 0 0.2rem, inset 0.2rem 0.2rem 0.4rem 0 rgba(255, 255, 255, 0.5), inset -1rem -1rem 0.2rem 0 rgba(0, 0, 0, 0.5);
+}
+
+/* ---------------------------- Lemnos Eki Clock ---------------------------- */
 
 .lemnosClock {
-    display: none;
     background-color: #212325;
-    border: 1px solid rgb(119, 119, 119);
-
+    border: 0.01rem solid rgb(150, 150, 150);
     /* https://stackoverflow.com/questions/56674800/css-circles-outer-border-with-white-space-on-inside-of-element */
     background-clip: content-box;
-    padding: 0.3rem;
+    padding: 0.6rem;
+    box-shadow: 1rem 1rem 1.5rem rgb(170, 170, 170);
 }
 
+.lemnosClock>.hourNumber {
+    width: 92%;
+}
+
+.lemnosClock>.mark {
+    width: 1.3%;
+    height: 2.2%;
+    bottom: 53%;
+    background-color: #d0d6da;
+    transform-origin: 50% 1250%;
+}
+
+.lemnosClock>.hourHand {
+    background-color: #d0d6da;
+    --handLength: 32%;
+    width: 3%;
+    top: 21%;
+    box-shadow: 0.1rem 0.1rem 0.2rem;
+    transform-origin: 50% 67%;
+}
+
+.lemnosClock>.minHand {
+    background-color: #d0d6da;
+    --handLength: 47.5%;
+    width: 2%;
+    top: 21%;
+    /* https://stackoverflow.com/questions/38339605/how-to-have-two-elements-share-a-box-shadow */
+    filter: drop-shadow(0.2rem 0.2rem 0.3rem rgb(31, 31, 31));
+    transform-origin: 50% 78%;
+}
+
+.lemnosClock>.minHandDot {
+    background-color: #d0d6da;
+    width: 5%;
+    z-index: 4;
+}
+
+.lemnosClock>.dot {
+    background-color: #d0d6da;
+    width: 3.5%;
+    box-shadow: 0.05rem 0.05rem 0.05rem black;
+}
+
+/* ---------------------- Yamazaki Home Rin Wall Clock ---------------------- */
+
 .yamazakiClock {
-    display: none;
     background-image: url(images/yamazakiWood.png);
     background-color: #514d4a;
     border: 0.3rem solid #514d4a;
 }
 
-.newgateClock {
-    display: block;
-    border: 0.1rem solid #d4b44a;
-    background: linear-gradient(to bottom left, #f8d447 0%, #f8d447 20%, #d4b44a 30%, #d4b44a 80%, #f8d447 90%, #f8d447 100%);
-    box-shadow: 0 0 0.3rem rgba(0, 0, 0, 0.3), 0 0 0.1rem #ece0b3 inset;
-    border-radius: 100%;
-}
-
-.clockText {
-    position: absolute;
-    color: #000;
-    top: 32%;
-    left: 41%;
-    font-size: 30%;
-    font-weight: 520;
-}
-
-/* min marks */
-.braunClock>.mark {
-    position: absolute;
-    width: 0.3%;
-    height: 2.5%;
-    top: 1.5%;
-    left: 50%;
-    background-color: #333;
-    transform-origin: 0 1950%;
-    z-index: 50;
-}
-
-/* hour marks */
-.braunClock>.mark:nth-of-type(5n + 2) {
-    background-color: black;
-    width: 0.5%;
-    height: 4%;
-    transform-origin: 0 1220%;
-}
-
-.braunClock>.middleCircle {
-    position: absolute;
-    border: 1px solid black;
-    opacity: 30%;
-    inset: 0;
-    margin: auto;
-    background-color: white;
-    aspect-ratio: 1;
-    border-radius: 100%;
-    width: 72%;
-    box-shadow: inset 0.05rem 0.05rem 0.1rem;
-    z-index: 1;
-}
-
-.braunClock>.hourNumber {
-    position: absolute;
-    font-size: 80%;
-    letter-spacing: -0.1rem;
-    color: black;
-    top: 45.5%;
-    left: 45%;
-    width: 10%;
-    height: 10%;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-}
-
-.braunClock>#dot {
-    position: absolute;
-    /* https://www.youtube.com/shorts/9cSL5dP4rgM */
-    inset: 0;
-    margin: auto;
-    aspect-ratio: 1;
-    background-color: black;
-    width: 6%;
-    /* https://stackoverflow.com/questions/24744776/creating-bevel-effect-for-content-box */
-    box-shadow: 0 0 0.2rem, inset 0.2rem 0.2rem 0.4rem 0 rgba(255, 255, 255, 0.5), inset -1rem -1rem 0.2rem 0 rgba(0, 0, 0, 0.5);
-    border-radius: 100%;
-    z-index: 100;
-}
-
-.braunClock>#hourHand {
-    position: absolute;
-    background-color: black;
-    height: 35%;
-    width: 4%;
-    top: 15%;
-    left: 48%;
-    border-top-right-radius: 0.2rem;
-    border-top-left-radius: 0.2rem;
-    box-shadow: 0 0 0.2rem;
-    z-index: 99;
-    transform-origin: bottom;
-}
-
-.braunClock>#minHand {
-    position: absolute;
-    background-color: black;
-    height: 47%;
-    width: 2%;
-    top: 3%;
-    left: 48.9%;
-    border-top-right-radius: 0.2rem;
-    border-top-left-radius: 0.2rem;
-    box-shadow: 0 0 0.2rem;
-    z-index: 97;
-    transform-origin: bottom;
-}
-
-/* #secHand {
-    position: absolute;
-    border: 1px solid red;
-    background-color: red;
-    height: 46%;
-    width: 0.1%;
-    top: 4%;
-    left: 50%;
-    z-index: 98;
-    transform-origin: bottom;
-} */
-
-.braunClock>#clockText1 {
-    position: absolute;
-    color: #000;
-    top: 25%;
-    left: 45%;
-    font-family: Abraham;
-    font-size: 40%;
-    font-weight: 500;
-    z-index: 3;
-}
-
-.braunClock>#clockText1>#A {
-    font-size: 150%;
-    margin: -9%;
-    font-weight: 100;
-}
-
-.braunClock>#clockText2 {
-    position: absolute;
-    color: #000;
-    top: 33%;
-    left: 48%;
-    font-size: 20%;
-    z-index: 3;
-}
-
-.lemnosClock>.hourNumber {
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    aspect-ratio: 1;
-    width: 140%;
-    left: -20%;
-    z-index: 98;
-}
-
-.lemnosClock>.mark {
-    position: absolute;
-    width: 1.3%;
-    height: 2.2%;
-    top: 22%;
-    left: 50%;
-    background-color: #d0d6da;
-    transform-origin: 0 1300%;
-    z-index: 50;
-}
-
-.lemnosClock>#dot {
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    aspect-ratio: 1;
-    background-color: #d0d6da;
-    width: 3.5%;
-    box-shadow: 0.1rem 0.1rem 0.1rem black;
-    border-radius: 100%;
-    z-index: 100;
-    opacity: 50%;
-}
-
-.lemnosClock>#hourHand {
-    position: absolute;
-    background-color: #d0d6da;
-    height: 30%;
-    width: 3%;
-    top: 29%;
-    left: 48.5%;
-    box-shadow: 0.1rem 0.1rem 0.2rem;
-    z-index: 98;
-    transform-origin: 50% 70%;
-}
-
-.lemnosClock>#minHand>#rectangle {
-    position: absolute;
-    background-color: #d0d6da;
-    height: 45%;
-    width: 2.3%;
-    top: 14%;
-    left: 48.8%;
-    /* https://stackoverflow.com/questions/38339605/how-to-have-two-elements-share-a-box-shadow */
-    filter: drop-shadow(0.2rem 0.2rem 0.6rem black);
-    z-index: 99;
-    transform-origin: 50% 80%;
-}
-
-.lemnosClock>#minHand>#circle {
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    aspect-ratio: 1;
-    background-color: #d0d6da;
-    width: 5.2%;
-    border-radius: 100%;
-    z-index: 99;
-}
-
 .yamazakiClock>.mark {
-    position: absolute;
     width: 1%;
-    height: 14.1%;
-    left: 49.8%;
+    height: 14.5%;
+    bottom: 86%;
     border-radius: 1.5px;
-    box-shadow: 0.2rem 0 0.5rem black;
+    /* box-shadow: 0.2rem 0 0.5rem black; */
     background-color: #514d4a;
-    transform-origin: 0% 356%;
-    z-index: 50;
+    transform-origin: 50% 346%;
 }
 
-.yamazakiClock>#bottomHex {
-    position: absolute;
-    inset: 0;
-    margin: auto;
+.yamazakiClock>.bottomHexagon {
     aspect-ratio: 1;
     background-color: #E1C16E;
     width: 5.5%;
-    border-radius: 100%;
 }
 
-.yamazakiClock>#topDot {
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    aspect-ratio: 1;
+.yamazakiClock>.dot {
     background-color: black;
     width: 4%;
     box-shadow: 0.1rem 0.1rem 0.1rem rgb(148, 148, 148), inset 0.2rem 0.05rem 0.1rem 0 rgba(255, 255, 255, 0.5), inset 0 0 2rem 0 black;
-    border-radius: 100%;
-    z-index: 100;
 }
 
-.yamazakiClock>#hourHand {
-    position: absolute;
+.yamazakiClock>.hourHand {
     background-color: black;
-    height: 30%;
-    width: 2.4%;
-    top: 20%;
-    left: 48.7%;
+    --handLength: 28%;
+    width: 2.3%;
     box-shadow: 0 0 0.2rem;
-    z-index: 99;
     transform-origin: bottom;
 }
 
-.yamazakiClock>#minHand {
-    position: absolute;
+.yamazakiClock>.minHand {
     background-color: black;
-    height: 35%;
+    --handLength: 35%;
     width: 1.2%;
-    top: 15%;
-    left: 49.5%;
     box-shadow: 0.1rem 0.1rem 0.2rem;
-    z-index: 97;
     transform-origin: bottom;
 }
 
-.line {
-    position: absolute;
-    z-index: 999;
-    background-color: blue;
-    height: 100%;
-    width: 0.5%;
-    inset: 0;
-    margin: auto;
-    opacity: 10%;
+/* -------------------- Newgate Master Edwards Wall Clock ------------------- */
+
+.newgateClock {
+    border: 0.1rem solid #d4b44a;
+    background: linear-gradient(to bottom left, #f8d447 0%, #f8d447 20%, #d4b44a 30%, #d4b44a 80%, #f8d447 90%, #f8d447 100%);
+    box-shadow: 0 0 0.3rem rgba(0, 0, 0, 0.3), 0 0 0.1rem #ece0b3 inset;
 }
 
-.line:nth-child(5n+1) {
-    background-color: red;
-}
-
-.newgateClock>#innerCircle {
-    position: absolute;
-    background: white;
+.newgateClock>.middleCircle {
+    background: #f8f6e9;
     aspect-ratio: 1;
     width: 93%;
-    inset: 0;
-    margin: auto;
-    border-radius: 100%;
     z-index: 1;
 }
 
 .newgateClock>.mark {
-    position: absolute;
+    background-color: black;
     width: 0.3%;
     height: 2.3%;
-    top: 6.6%;
-    left: 50%;
-    background-color: black;
-    transform-origin: 0 1900%;
-    z-index: 2;
+    bottom: 87%;
+    transform-origin: 50% 1940%;
 }
 
-.newgateClock>.mark:nth-of-type(5n + 4) {
+.newgateClock>.mark:nth-of-type(5n - 2) {
     background-color: black;
     width: 1%;
     height: 2.6%;
-    transform-origin: 0 1690%;
-    transform: translate(1rem, 1rem);
+    transform-origin: 50% 1720%;
 }
 
 .newgateClock>.hourNumber {
-    position: absolute;
-    font-size: 110%;
     font-family: rubicon;
+    font-size: 110%;
     color: black;
-    inset: 0;
-    margin: auto;
     height: 10%;
-    bottom: 3%;
-    z-index: 100;
+    line-height: 80%;
 }
 
 .newgateClock>.clockText {
-    position: absolute;
-    color: #000;
-    top: 32%;
-    left: 41%;
+    top: 30%;
     font-size: 30%;
-    font-weight: 520;
-    z-index: 3;
 }
 
-.newgateClock>#clockText2 {
-    position: absolute;
-    color: #000;
-    top: 65%;
-    left: 47.5%;
-    font-size: 35%;
+.newgateClock>.text2 {
+    top: 35%;
+    font-size: 40%;
     font-weight: 540;
-    aspect-ratio: 1;
     height: 5%;
-    border-radius: 100%;
     border: 0.1rem solid black;
-    z-index: 3;
 }
 
-.newgateClock>#bottomDot {
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    aspect-ratio: 1;
-    background-color: black;
+.newgateClock>.bottomDot {
+    background-color: #121212;
     width: 7%;
-    border-radius: 100%;
     z-index: 2;
 }
 
-.newgateClock>#topDot {
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    aspect-ratio: 1;
+.newgateClock>.hourHand {
     background-color: black;
-    width: 4%;
-    border-radius: 100%;
-    z-index: 100;
-}
-
-.newgateClock>#hourHand {
-    position: absolute;
-    background-color: black;
-    --length: 28%;
-    inset: 0;
-    margin: auto;
-    height: var(--length);
+    --handLength: 28%;
     width: 3%;
-    bottom: var(--length);
-    box-shadow: 0 0 0.1rem;
-    z-index: 99;
+    box-shadow: 0.2rem 0 0.1rem rgb(0, 0, 0);
     transform-origin: bottom;
 }
 
-.newgateClock>#minHand {
-    position: absolute;
+.newgateClock>.minHand {
     background-color: black;
-    --length: 42%;
-    inset: 0;
-    margin: auto;
-    height: var(--length);
+    --handLength: 42%;
     width: 1.8%;
-    bottom: var(--length);
-    box-shadow: 0 0 0.1rem;
-    z-index: 97;
+    box-shadow: 0.2rem 0 0.1rem rgb(0, 0, 0);
     transform-origin: bottom;
+}
+
+.newgateClock>.topDot {
+    background-color: #121212;
+    box-shadow: -0.1rem -0.1rem 0.1rem black;
+    width: 4%;
+}
+
+/* ---------------------- Arne Jacobsen Banker's Clock ---------------------- */
+
+.bankerClock {
+    border: 0.01rem solid rgb(119, 119, 119);
+}
+
+.bankerClock>.middleCircle {
+    border: 0.01rem solid rgb(119, 119, 119);
+    box-shadow: inset 0 0 0.1rem rgb(119, 119, 119);
+    width: 98.5%;
+}
+
+.bankerClock>.clockText {
+    font-family: aj-regular;
+    top: 63%;
+    font-size: 17%;
+}
+
+.bankerClock>.hourNumber {
+    width: 2%;
+    aspect-ratio: 1 / 12;
+}
+
+.bankerClock>.hourNumber>.square {
+    position: absolute;
+    border: 0.01rem solid black;
+    background-color: white;
+    aspect-ratio: 1;
+    width: 90%;
+}
+
+.bankerClock>.hourHand {
+    background-color: black;
+    --handLength: 38%;
+    box-shadow: 0 0 0.1rem rgb(133, 133, 133);
+    width: 0.5%;
+    bottom: 17%;
+    transform-origin: 50% 72.5%;
+}
+
+.bankerClock>.minHand {
+    background-color: black;
+    --handLength: 53.6%;
+    box-shadow: 0 0 0.1rem rgb(133, 133, 133);
+    width: 0.5%;
+    bottom: 32.4%;
+    transform-origin: 50% 80%;
+}
+
+.bankerClock>.dot {
+    background-color: #ab3629;
+    width: 4.5%;
+    box-shadow: 0.1rem 0.1rem 0.1rem rgb(164, 164, 164);
 }
